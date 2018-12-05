@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> <ion-toggle id="onoff" checked="true" [(ngModel)]="online" (ionChange)="isOnline()"></ion-toggle>Heilen Plus </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-item>
+    <ion-label>Online/Offile</ion-label>
+    <ion-toggle checked="true" ></ion-toggle>
+  </ion-item> -->
+
+  <agm-map (mapReady)="mapReady($event)" [latitude]="lat" [longitude]="lng" [zoom]="15" [streetViewControl]="false"
+    [usePanning]="false" [scrollwheel]="true" [rotateControl]="true" [zoomControl]="false">
+    <agm-marker [latitude]="lat" [longitude]="lng" iconUrl="/assets/imgs/point.png"></agm-marker>
+    <agm-marker *ngFor="let location of locations; let i=index" [latitude]="location.lat" [longitude]="location.lng">
+      <agm-info-window>
+        <div>
+          <table>
+            <tr>
+              <td>Rut: {{location.id_usuario.rut | uppercase}}</td>
+            </tr>
+            <tr>
+              <td>Nombre: {{location.id_usuario.firstname | uppercase}} {{location.id_usuario.lastname | uppercase}}</td>
+            </tr>
+            <tr>
+              <td>Email: {{location.id_usuario.username}}</td>
+            </tr>
+            <tr>
+              <td>Calificacion: {{location.id_usuario.id_calificacion.pun_final.toFixed(2)}}/5</td>
+            </tr>
+            <tr>
+              <td>Especialidad: {{location.id_usuario.id_especialidad.nombre}}</td>
+            </tr>
+          </table>
+        </div>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+
+  <!-- <ion-fab top right edge>
+    <button ion-fab mini color="dark">
+      <ion-icon name="funnel"></ion-icon>
+    </button>
+    <ion-fab-list>
+      <button ion-fab>
+        <ion-icon name="logo-facebook"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="logo-twitter"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon name="logo-googleplus"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab> -->
+
+  <ion-fab right bottom>
+    <button ion-fab color="light" on-click="myPosition()">
+      <ion-icon name="locate"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

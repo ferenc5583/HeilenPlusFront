@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mis Solucitudes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  Historial de Solicitudes
+    <ion-list>
+        <ion-item *ngFor="let item of contratos">
+            <h2>id: {{ item.id }}</h2>
+            <p>id_paciente: {{ item.id_paciente }}</p>
+            <p>id_profesional: {{ item.id_profesional }}</p>
+            <p>detalle: {{ item.detalle }}</p>
+            <p>monto: {{ item.monto }}</p>
+            <p>acetada: {{ item.aceptada }}</p>
+            <p>terminada: {{ item.terminada }}</p>
+            <p>calificada: {{ item.calificada }}</p>
+            <p>fecha: {{ item.fecha }}</p>
+            <p>hora: {{ item.hora }}</p>
+            <button ion-button clear item-right>Más...</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

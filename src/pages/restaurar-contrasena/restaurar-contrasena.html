@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Restaurar Contraseña
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page14">
+  <div id="restaurarContrasena-markdown2" style="text-align:center;" class="show-list-numbers-and-dots">
+    <p style="color:#000000;font-size:18px;">
+      Ingrese su Email con el que se ha registrado en el sistema, se le enviará un Correo con una nueva contraseña,
+      <strong>
+        PROCURE CAMBIARLA LUEGO
+      </strong>
+    </p>
+  </div>
+    <div class="spacer" style="width:300px;height:35px;" id="restaurarContrasena-spacer3"></div>
+    <ion-item id="restaurarContrasena-input9">
+      <ion-label>
+        Email
+      </ion-label>
+      <ion-input type="email" [(ngModel)]="correo" placeholder=""></ion-input>
+    </ion-item>
+  <button  ion-button color="dark" block on-click="forgotPass()" >
+    Cambiar Contraseña
+  </button>
+</ion-content>

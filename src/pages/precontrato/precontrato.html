@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar color="dark">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Resumen del Servicio
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item color="none">
+            Fecha
+            <ion-note item-right>{{ fecha }}</ion-note>
+        </ion-item>
+        <ion-item color="none">
+            Hora
+            <ion-note item-right>{{ hora }}</ion-note>
+        </ion-item>
+        <ion-item color="none">
+            Tipo de Servicio
+            <ion-note item-right>AMBULATORIO</ion-note>
+        </ion-item>
+        <ion-item color="none">
+            Profesión del Servicio
+            <ion-note item-right>ALI K PROFESION</ion-note>
+        </ion-item>
+        <ion-item color="none">
+            Monto a Cancelar
+            <ion-note item-right>${{ monto }}</ion-note>
+        </ion-item>
+        <ion-item color="none">
+            Distancia (apx)
+            <ion-note item-right>AKI LA DISTANCIA</ion-note>
+        </ion-item>
+    </ion-list>
+
+    <p>Al presionar "Aceptar" Ud se compromete a aceptár todos
+        los <u>Términos y condiciones</u> expuestos del servicio y hacerse responsable de
+        este contrato.</p>
+    <button ion-button color="secondary" block (click)="goToMatrix()">
+        Aceptar
+    </button>
+</ion-content>

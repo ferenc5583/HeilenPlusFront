@@ -1,0 +1,7 @@
+{
+  "name": "HeilenPlus",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

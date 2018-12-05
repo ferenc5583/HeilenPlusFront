@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Mi Cuenta
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page13">
+  <ion-list id="miCuenta-list6">
+    <ion-item color="none" id="miCuenta-list-item13">
+      Nombre
+      <ion-note item-right>{{nombre}}</ion-note>
+    </ion-item>
+    <ion-item color="none" id="miCuenta-list-item14">
+      Apellido
+      <ion-note item-right>{{apellido}}</ion-note>
+    </ion-item>
+    <ion-item color="none" id="miCuenta-list-item15">
+      Rut
+      <ion-note item-right>{{rut}}</ion-note>
+    </ion-item>
+    <ion-item color="none">
+      Especialidad
+      <ion-note item-right>{{especialidad}}</ion-note>
+    </ion-item>
+    <ion-item color="none">
+      Calificación
+      <ion-note item-right>{{calificacion}} de 5</ion-note>
+    </ion-item>
+    <ion-item color="none">
+      Estado
+      <ion-note item-right *ngIf="estado == false">OCULTO</ion-note>
+      <ion-note item-right *ngIf="estado != false">DISPONIBLE</ion-note>
+    </ion-item>
+    <ion-item color="none" id="miCuenta-list-item16">
+      Email
+      <ion-note item-right>{{email}}</ion-note>
+    </ion-item>
+  </ion-list>
+  <ion-label on-click="passChange()">
+    Cambiar Contraseña
+  </ion-label>
+  <button ion-button outline color="danger" block on-click="logOut()">
+    Cerrar Sesión
+  </button>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>
+      Registrarse
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page11">
+    <ion-list id="registrarse-list3">
+      <ion-item id="registrarse-input3">
+        <ion-label>
+          Rut
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="rut" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item id="registrarse-input4">
+        <ion-label>
+          Nombre
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="firstname" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item id="registrarse-input6">
+        <ion-label>
+          Apellido
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="lastname" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item id="registrarse-input5">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-input type="email" [(ngModel)]="username" placeholder=""></ion-input>
+      </ion-item>
+      <!-- <ion-item id="registrarse-input7">
+        <ion-label>
+          Nacimiento
+        </ion-label>
+        <ion-input type="date" placeholder=""></ion-input>
+      </ion-item> -->
+    </ion-list>
+    <div class="spacer" style="width:300px;height:26px;" id="registrarse-spacer2"></div>
+    <ion-item id="registrarse-input7">
+      <ion-label stacked>
+        Contraseña
+      </ion-label>
+      <ion-input type="password" [(ngModel)]="password" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item id="registrarse-input8">
+      <ion-label stacked>
+        Repetir Contraseña
+      </ion-label>
+      <ion-input type="password" [(ngModel)]="passRepete" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked on-click="goToTerminos()">Acepta los Terminos y Condiciones del Servicio</ion-label>
+        <ion-checkbox checked="true" color="dark" ></ion-checkbox>
+    </ion-item>
+    <button id="registrarse-button4" ion-button color="dark" block on-click="goToRegister()">
+      Registrarse
+    </button>
+    <button rigth ion-button clear color="dark" small on-click="abreModal()">
+      <ion-icon name="help"></ion-icon>
+    </button>
+</ion-content>

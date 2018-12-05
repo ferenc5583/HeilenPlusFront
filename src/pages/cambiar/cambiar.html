@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Cambiar Contraseña
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page15">
+  <ion-item id="cambiar-input10">
+    <ion-label stacked>
+      Contraseña Actual
+    </ion-label>
+    <ion-input type="password" placeholder="" [(ngModel)]="currentPass"></ion-input>
+  </ion-item>
+  <ion-item id="cambiar-input11">
+    <ion-label stacked>
+      Nueva Contraseña
+    </ion-label>
+    <ion-input type="password" placeholder="" [(ngModel)]="newPass"></ion-input>
+  </ion-item>
+  <ion-item id="cambiar-input12">
+    <ion-label stacked>
+      Repita Nueva Contraseña
+    </ion-label>
+    <ion-input type="password" placeholder="" [(ngModel)]="repetePass"></ion-input>
+  </ion-item>
+  <button ion-button color="dark" block on-click="cambiarPass()">
+    Cambiar Contraseña
+  </button>
+  <button rigth ion-button clear color="dark" small on-click="abreModal()">
+    <ion-icon name="help"></ion-icon>
+  </button>
+</ion-content>

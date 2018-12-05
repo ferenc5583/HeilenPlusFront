@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>
+      Inicio Sesión
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page10"> 
+    <ion-list id="inicioSesion-list2">
+      <ion-item id="inicioSesion-input1">
+        <ion-label>
+        <ion-icon name="at"></ion-icon>
+        </ion-label>
+        <!-- borrar values de email y contraseña pre cargadas -->
+        <ion-input type="email" [(ngModel)]="username" placeholder="Email" value="nicole@mail.com"></ion-input>
+      </ion-item>
+      <ion-item id="inicioSesion-input2">
+        <ion-label>
+        <ion-icon name="key"></ion-icon>
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="password" placeholder="Contraseña" value="123456"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-label on-click="passForgot()">
+      Olvidó su contraseña?
+    </ion-label>
+    <div class="spacer" style="height:40px;" id="inicioSesion-spacer1"></div>
+    <button id="inicioSesion-button2" ion-button color="dark" block on-click="Signup()">
+      Iniciar Sesión
+    </button>
+    <button id="inicioSesion-button3" ion-button clear color="dark" block href-inappbrowser="/signup" on-click="goToRegister()">
+      O crear una cuenta
+    </button>
+    <!-- boton de prueba -->
+    <button id="inicioSesion-button3" ion-button color="danger" block href-inappbrowser="/signup" on-click="goToMatrix()" hidden>
+      Boton a la Matrix
+    </button>
+    <!-- botons de prueba -->
+    <button id="inicioSesion-button3" ion-button color="primary" block href-inappbrowser="/signup" on-click="openUbication();" hidden>
+      Abrir Ubicacion
+    </button>
+</ion-content>
