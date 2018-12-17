@@ -8,20 +8,47 @@
 </ion-header>
 
 <ion-content padding>
-  Historial de Solicitudes
-    <ion-list>
-        <ion-item *ngFor="let item of contratos">
-            <h2>id: {{ item.id }}</h2>
-            <p>id_paciente: {{ item.id_paciente }}</p>
-            <p>id_profesional: {{ item.id_profesional }}</p>
-            <p>detalle: {{ item.detalle }}</p>
-            <p>monto: {{ item.monto }}</p>
-            <p>acetada: {{ item.aceptada }}</p>
-            <p>terminada: {{ item.terminada }}</p>
-            <p>calificada: {{ item.calificada }}</p>
-            <p>fecha: {{ item.fecha }}</p>
-            <p>hora: {{ item.hora }}</p>
-            <button ion-button clear item-right>Más...</button>
-        </ion-item>
-    </ion-list>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Suelta para Actualizar">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscador"></ion-searchbar>
+
+  <p *ngIf="contratos == 0" text-center>No hay Servicios.</p>
+  <ion-list>
+    <ion-item *ngFor="let item of contratos">
+      <p>Fecha: {{ item.fecha }}</p>
+      <p>Hora: {{ item.hora }}</p>
+      <p>Monto: ${{ item.monto }}</p>
+      <button ion-button clear item-right small (click)="goToDetalle(item)">
+        Más Detalles &nbsp;<ion-icon name="arrow-forward"></ion-icon>
+      </button>
+
+      <p *ngIf="item.terminada == false && item.calificada == false && item.cancelada == true" style="color: #f53d3d">
+        <ion-icon name="alert"></ion-icon> Cancelada!!
+      </p>
+
+      <p *ngIf="item.terminada == false && item.calificada == false && item.cancelada == false" style="color: #f7c70c">
+        <ion-icon name="alert"></ion-icon> No Terminada!!
+      </p>
+
+      <p *ngIf="item.calificada == false && item.terminada == true && item.cancelada == false" style="color: #32db64">
+        <ion-icon name="alert"></ion-icon> No Calificada!!
+      </p>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-list>
+      <ion-item>
+        <p>Recaudado Semana: ${{ total }}</p>
+        <p >Comisión(10%): ${{ comision }}</p>
+        <button *ngIf="total != 0" ion-button clear item-right small (click)="pay()">Pagar</button>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+</ion-footer>

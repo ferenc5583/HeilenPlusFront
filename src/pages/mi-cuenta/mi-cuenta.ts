@@ -14,7 +14,7 @@ import { CambiarPage } from '../cambiar/cambiar';
   templateUrl: 'mi-cuenta.html'
 })
 export class MiCuentaPage {
-  
+
   nombre: string;
   apellido: string;
   email: string;
@@ -22,6 +22,7 @@ export class MiCuentaPage {
   especialidad: string;
   rut: string;
   estado: boolean;
+  especialidades: any;
 
   token = localStorage.getItem('token');
 
@@ -34,7 +35,7 @@ export class MiCuentaPage {
   logOut() {
     this.auth.logout();
     this.navCtrl.setRoot(InicioSesionPage);
-    this.http.put(`${this.auth.url}/user/isOnline/0` , {}, { headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + this.token } }).subscribe();
+    this.http.put(`${this.auth.url}/user/isOnline/0`, {}, { headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + this.token } }).subscribe();
   }
 
   ngOnInit() {
@@ -45,14 +46,34 @@ export class MiCuentaPage {
         this.nombre = res.firstname.toUpperCase();
         this.apellido = res.lastname.toUpperCase();
         this.calificacion = res.id_calificacion.pun_final.toFixed(2);
-        this.especialidad = res.id_especialidad.nombre.toUpperCase();
+        this.especialidad = res.id_especialidad.id;
         this.rut = res.rut.toUpperCase();
-        this.estado =res.online;
+        this.estado = res.online;
       });
+
+    this.http.get(`${this.auth.url}/especialidad/`).subscribe((res: any) => {
+      this.especialidades = res;
+    })
   }
 
   passChange() {
     this.navCtrl.push(CambiarPage);
+  }
+
+  doRefresh(refresher) {
+    //durante la carga
+    this.ngOnInit();
+
+    setTimeout(() => {
+      //despues de cargar
+      refresher.complete();
+    }, 500);
+  }
+
+  onChange(C) {
+    this.http.put(`${this.auth.url}/user/especiEdit/${C}`, {}, { headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + this.token } }).subscribe((res: any) => {
+      console.log(res);
+    })
   }
 
 }

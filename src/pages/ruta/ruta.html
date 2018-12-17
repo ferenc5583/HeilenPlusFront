@@ -6,8 +6,8 @@
   
   <ion-content class="grid-basic-page">
   
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" [streetViewControl]="false">
-        <agm-direction [origin]="origin" [destination]="destination" travelMode="DRIVING">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" [streetViewControl]="false" disableDoubleClickZoom="true" [zoomControl]="false" gestureHandling="none">
+        <agm-direction [origin]="origin" [destination]="destination" travelMode="DRIVING"  [markerOptions]="markerOptions" [renderOptions]="renderOptions">
         </agm-direction>
     </agm-map>
     
@@ -29,5 +29,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+
+    <button ion-button block color="danger" (click)="cancell()">Cancelar</button>
   
   </ion-content>

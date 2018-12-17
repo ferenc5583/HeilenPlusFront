@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-navbar color="dark">
+        <ion-title>Paga tu Comisión</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <h6 text-center>Cada semana deberás depositar tu comision a los daros que se presentan a continuación.</h6>
+
+    <ion-list>
+        <ion-item>
+            Producto
+            <ion-note item-right>Chequera Electrónica</ion-note>
+        </ion-item>
+        <ion-item>
+            N° de Cuenta
+            <ion-note item-right>52874123662</ion-note>
+        </ion-item>
+        <ion-item>
+            Banco
+            <ion-note item-right>Banco Estado</ion-note>
+        </ion-item>
+        <ion-item>
+            RUT
+            <ion-note item-right>72365899-3</ion-note>
+        </ion-item>
+        <ion-item>
+            Nombre
+            <ion-note item-right>Heilen LTDA</ion-note>
+        </ion-item>
+        <ion-item>
+            Email
+            <ion-note item-right>heilen.soporte@gmail.com</ion-note>
+        </ion-item>
+    </ion-list>
+
+    <h4 text-center>Monto recaudado en la Semana</h4>
+    <p text-center style="color: #f53d3d">${{ total }}</p>
+    <h4 text-center>Comisión a Pagar</h4>
+    <p text-center style="color: #f53d3d">${{ comision }}</p>
+    <p text-center>**Recuerda que tienes plazo máximo hasta el lunes de cada semana para el deposito, en caso contrario
+        se Deshabilitará tu cuenta**</p>
+
+</ion-content>

@@ -9,6 +9,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page13">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Suelta para Actualizar">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-list id="miCuenta-list6">
     <ion-item color="none" id="miCuenta-list-item13">
       Nombre
@@ -23,8 +27,10 @@
       <ion-note item-right>{{rut}}</ion-note>
     </ion-item>
     <ion-item color="none">
-      Especialidad
-      <ion-note item-right>{{especialidad}}</ion-note>
+      <ion-label style="color: black">Especialidad(es)</ion-label>
+      <ion-select [(ngModel)]="hairColor" okText="Cambiar" cancelText="Cancelar" #C (ionChange)="onChange(C.value)">
+        <ion-option *ngFor="let item of especialidades" value="{{item.id}}" [selected]="especialidad == item.id">{{ item.nombre }}</ion-option>
+      </ion-select>
     </ion-item>
     <ion-item color="none">
       Calificación

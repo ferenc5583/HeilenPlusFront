@@ -1,8 +1,5 @@
 <ion-header>
     <ion-navbar color="dark">
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
         <ion-title>
             Resumen del Servicio
         </ion-title>
@@ -25,7 +22,7 @@
         </ion-item>
         <ion-item color="none">
             Profesión del Servicio
-            <ion-note item-right>ALI K PROFESION</ion-note>
+            <ion-note item-right>{{ especialidad }}</ion-note>
         </ion-item>
         <ion-item color="none">
             Monto a Cancelar
@@ -33,14 +30,17 @@
         </ion-item>
         <ion-item color="none">
             Distancia (apx)
-            <ion-note item-right>AKI LA DISTANCIA</ion-note>
+            <ion-note item-right>{{ distance }} km</ion-note>
         </ion-item>
     </ion-list>
 
     <p>Al presionar "Aceptar" Ud se compromete a aceptár todos
-        los <u>Términos y condiciones</u> expuestos del servicio y hacerse responsable de
+        los <u (click)="goToTerminos()">Términos y condiciones</u> expuestos del servicio y hacerse responsable de
         este contrato.</p>
     <button ion-button color="secondary" block (click)="goToMatrix()">
         Aceptar
+    </button>
+    <button ion-button outline color="danger" block (click)="cancell()">
+        Rechazar
     </button>
 </ion-content>

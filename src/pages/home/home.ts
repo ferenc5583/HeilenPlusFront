@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { RutaPage } from '../ruta/ruta';
 import { PrecontratoPage } from '../precontrato/precontrato';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @Component({
   selector: 'page-home',
@@ -26,11 +27,36 @@ export class HomePage {
 
   id_user: any;
 
-  constructor(public navCtrl: NavController, public geo: Geolocation, public http: HttpClient, private auth: AuthService, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public geo: Geolocation, public http: HttpClient, private auth: AuthService, private plt: Platform, public alertCtrl: AlertController, private localNoti: LocalNotifications) {
 
     setInterval(() => {
       this.notifierService();
     }, 2000);
+
+    this.plt.ready().then((readySource) => {
+      this.localNoti.on('click').subscribe(notification => {
+        let alerts = this.alertCtrl.create({
+          title: 'Socilitud de atención',
+          message: 'Deseas aceptar la solicitud se servicio?',
+          buttons: [
+            {
+              text: 'No Aceptar',
+              handler: () => {
+                alert("No aceptaste");
+              }
+            },
+            {
+              text: 'Aceptar',
+              handler: () => {
+                alert("Aceptaste");
+              }
+            }
+          ]
+        });
+
+        alerts.present();
+      })
+    });
 
   }
 
@@ -80,10 +106,15 @@ export class HomePage {
     }
 
   }
-  //agregar confirm o push notification
+
   notifierService() {
     this.http.get(`${this.auth.url}/contrato/notifier/`, { headers: { 'Content-Type': 'application/json', 'Authorization': 'bearer ' + this.token } }).subscribe((res: any) => {
       if (res != null && this.norep == false) {
+        this.localNoti.schedule({
+          title: "Solicitud de Atención",
+          text: 'Tienes una Solicitud de Atención Pendiente',
+          trigger: { at: new Date(new Date().getTime() + 1000) },
+        });
         this.norep = true;
         let alerts = this.alertCtrl.create({
           title: 'Tienes una solicitud de atención',
@@ -93,7 +124,7 @@ export class HomePage {
               text: 'No Aceptar',
               handler: () => {
                 this.norep = false;
-                this.http.put(`${this.auth.url}/contrato/estados/0,0,0,${res.id}`, {}).subscribe((r: any) =>{
+                this.http.put(`${this.auth.url}/contrato/estados/0,0,0,1,${res.id}`, {}).subscribe((r: any) => {
                 })
               }
             },
@@ -101,10 +132,10 @@ export class HomePage {
               text: 'Aceptar',
               handler: () => {
                 this.norep = false;
-                this.navCtrl.push(PrecontratoPage, {
+                this.navCtrl.setRoot(PrecontratoPage, {
                   id: res.id
                 });
-                this.http.put(`${this.auth.url}/contrato/estados/0,0,0,${res.id}`, {}).subscribe((r: any) =>{
+                this.http.put(`${this.auth.url}/contrato/estados/0,0,0,0,${res.id}`, {}).subscribe((r: any) => {
                 })
               }
             }

@@ -12,6 +12,11 @@ import { MiCuentaPage } from '../pages/mi-cuenta/mi-cuenta';
 import { RestaurarContrasenaPage } from '../pages/restaurar-contrasena/restaurar-contrasena';
 import { CambiarPage } from '../pages/cambiar/cambiar';
 import { PrecontratoPage } from '../pages/precontrato/precontrato';
+import { DetallePage } from '../pages/detalle/detalle';
+import { CierrePage } from '../pages/cierre/cierre';
+import { TerminosPage } from '../pages/terminos/terminos';
+import { SobrePage } from '../pages/sobre/sobre';
+import { PagoPage } from '../pages/pago/pago';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,6 +29,8 @@ import { HttpModule } from '@angular/http';
 import { AuthService } from '../services/auth.service';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings';
 import { Diagnostic } from '@ionic-native/diagnostic';
+
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 import {DatePipe} from '@angular/common';
 
@@ -38,7 +45,12 @@ import {DatePipe} from '@angular/common';
     MiCuentaPage,
     RestaurarContrasenaPage,
     CambiarPage,
-    PrecontratoPage
+    PrecontratoPage,
+    DetallePage,
+    CierrePage,
+    TerminosPage,
+    SobrePage,
+    PagoPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +74,12 @@ import {DatePipe} from '@angular/common';
     MiCuentaPage,
     RestaurarContrasenaPage,
     CambiarPage,
-    PrecontratoPage
+    PrecontratoPage,
+    DetallePage,
+    CierrePage,
+    TerminosPage,
+    SobrePage,
+    PagoPage
   ],
   providers: [
     StatusBar,
@@ -72,6 +89,7 @@ import {DatePipe} from '@angular/common';
     DatePipe,
     OpenNativeSettings,
     Diagnostic,
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

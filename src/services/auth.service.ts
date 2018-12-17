@@ -11,7 +11,7 @@ export class AuthService {
    url = 'http://192.168.0.106:8081';
    //url para sever en lan: http://192.168.0.106:8081
    //url para sever solo en equipo: http://localhost:8081
-   //url dominio de amazon: http://heilenback.sa-east-1.elasticbeanstalk.com
+   //url dominio de amazon: 
 
    constructor(private http: Http, public toastCtrl: ToastController) {
       this.userName = '';

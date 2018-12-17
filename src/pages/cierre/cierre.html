@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar color="dark">
+        <ion-title>
+            Término del Servicio
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h5 text-center>Has arribado a la Posicion de tu Paciente</h5>
+    <p text-center>Recuerda exigir el pago de tu Servicio a tu paciente y pedirle que te califique por tu atención una vez terminada.</p>
+    <h6 text-center>Monto a Cancelar</h6>
+    <h4 text-center style="color: #f53d3d">${{ monto }}</h4>
+    <button ion-button block (click)="pay()">Terminar la Atención</button>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <p text-center>Ud se ha comprometido a aceptár todos
+            los <u on-click="goToTerminos()">Términos y condiciones</u> expuestos del servicio y hacerse
+            responsable de
+            este contrato.</p>
+    </ion-toolbar>
+</ion-footer>

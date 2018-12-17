@@ -4,9 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ListPage } from '../pages/list/list';
-import { RutaPage } from '../pages/ruta/ruta';
 import { InicioSesionPage } from '../pages/inicio-sesion/inicio-sesion';
 import { MiCuentaPage } from '../pages/mi-cuenta/mi-cuenta';
+import { SobrePage } from '../pages/sobre/sobre';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,7 +25,7 @@ export class MyApp {
     this.pages = [
       { icon: 'contact', title: 'Mi Cuenta', component: MiCuentaPage},
       { icon: 'list', title: 'Mis Solicitudes', component: ListPage },
-      { icon: 'map', title: 'Mapa Con Ruta', component: RutaPage}
+      { icon: '', title: '! Sobre la App', component: SobrePage}
     ];
 
   }
